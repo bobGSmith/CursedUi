@@ -92,4 +92,8 @@ class SelectMenu () :
         self.active = False 
         self.attr = curses.A_NORMAL
         self.display() 
+    def getItemById(self,id): 
+        for i in range(len(self.item_selectors)):
+            if id == self.item_selectors[i].id:
+                return self.item_selectors[i]
     
