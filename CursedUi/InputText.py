@@ -1,6 +1,9 @@
 import curses
 class InputText () : 
-    def __init__ (self,containerScr, label,y,x,width,id,shift = 2,selected_attr=curses.A_BOLD ,default_value = "type here",hide_input = False,mask = "*") : 
+    def __init__ (self,containerScr, label,y,x,width,id,shift = 2,selected_attr=curses.A_BOLD ,default_value = "type here",hide_input = False,mask = "*",
+            hint = "Text: type or paste input, hit LEFT when done!",
+            hint_box = None, parent_menu = None
+        ) : 
         self.containerScr = containerScr
         self.label = label
         self.id = id 
@@ -15,6 +18,9 @@ class InputText () :
         self.value = self.default_value
         self.hide_input = hide_input 
         self.mask = mask
+        self.hint = hint 
+        self.hint_box = hint_box 
+        self.parent_menu = parent_menu
         self.active = False 
         self.build()
     def build(self): 
@@ -39,9 +45,15 @@ class InputText () :
         if self.value == self.default_value:
             self.value = ""
         self.build() 
+        if self.hint_box != None: 
+            self.hint_box.clear() 
+            self.hint_box.addstr(0,1,self.hint)
+            self.hint_box.refresh()
     def deactivate (self):
         self.active = False 
         self.attr = curses.A_NORMAL
         self.build()
+        if self.parent_menu != None: 
+            self.parent_menu.activate() 
     def returnChoice (self):
         return self.value

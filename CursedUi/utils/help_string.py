@@ -1,0 +1,1 @@
+help_string = "Welcome to this CursedUi app! \nUse arrow keys to navigate the menu. Right arrow activates item, Left deactivates. Up Down scrolls through item options, hit return to 'click' buttons. For text input fields you can type or paste."

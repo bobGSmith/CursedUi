@@ -1,12 +1,17 @@
 import curses 
 
 class SelectItem () :
-    def __init__ (self,containerScr,label,items,y,x,id,label_width=8,item_width=8,shift=2,selected_attr = curses.A_BOLD):
+    def __init__ (self,containerScr,label,items,y,x,id,label_width=8,item_width=8,shift=2,selected_attr = curses.A_BOLD,
+                  hint = "Select: use UP/DOWN to scroll items, hit LEFT when done",
+                  hint_box = None, parent_menu = None):
         self.label = label
         self.items = items 
         self.y = y 
         self.x = x
         self.id = id
+        self.hint = hint 
+        self.hint_box = hint_box
+        self.parent_menu = parent_menu
         self.width = label_width + item_width + 2
         self.label_width = label_width 
         self.item_width = item_width
@@ -37,9 +42,15 @@ class SelectItem () :
         self.active = True
         self.attr = self.selected_attr
         self.build()
+        if self.hint_box != None: 
+            self.hint_box.clear() 
+            self.hint_box.addstr(0,1,self.hint)
+            self.hint_box.refresh() 
     def deactivate(self):
         self.active = False 
         self.attr = curses.A_NORMAL
+        if self.parent_menu != None: 
+            self.parent_menu.activate() 
         self.build()
     def returnChoice(self):
         return self.items[self.selection]

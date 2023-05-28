@@ -16,24 +16,14 @@ The package comes with a set of importable objects:
 * SelectItem - Similar to a drop down menu, user can select from list of options using up and down arrow. 
 * SelectMenu - This takes an array of the objects described, displays them, and allows the user to scroll through, activate, and deactivate them. 
 
-## To do
-### Setup App 
-Possobly turn the main function in the `example.py` script into an App object where you can build the app by adding input fields and display fields etc. Probs not worth it. Alternatively create a setup_terminal function to put in your main file with all the options (display areas, minimum height/width etc)
-
-### Mouse click 
-Possibly enable mouse clickc to activate input fields trigger onClick events for `Buttons`. 
-
-### Allow multiple SelectMenu 
-Either make select menu that can take an array of select Menus (which would allow arbitrary depth of nesting) or possibly just make it possible to add more than one SelectMenu to the Main / App area and have a way of selecting from that (probably a less good solution).
-
-### Add Utils 
-Make a utils module with all the helper functions like add_newlines etc. 
-
 ## Scrips
 * example.py - a demo of a app created with CursedUi
 * getKey.py - a tool for checking the number assocated with each key 
 
-## Example screenshot 
+## Example 
+For example code see `example.py`
+
+### Example screenshot 
 
 ```
  ┌────────────────────────────────────────────────────────────┐  
@@ -53,4 +43,24 @@ Make a utils module with all the helper functions like add_newlines etc.
  ~ buttons. For text input fields you can type or paste.         
                                                                  
  | Hit Q to quit | Use arrow keys |                              
+```
+
+## Dev to do
+### Setup App 
+Possobly turn the main function in the `example.py` script into an App object where you can build the app by adding input fields and display fields etc. Probs not worth it. Alternatively create a setup_terminal function to put in your main file with all the options (display areas, minimum height/width etc)
+
+### Mouse click 
+Possibly enable mouse clickc to activate input fields trigger onClick events for `Buttons`. 
+
+### Allow multiple SelectMenu 
+Either make select menu that can take an array of select Menus (which would allow arbitrary depth of nesting) or possibly just make it possible to add more than one SelectMenu to the Main / App area and have a way of selecting from that (probably a less good solution).
+
+### Add Utils 
+Make a utils module with all the helper functions like add_newlines etc. 
+
+### Text input scrolling display 
+As you type beyond the bounds of the text input it should scroll ahead and display the latest characters and chop off the beginning, possibly add a ... at the start. for example in a 20 space input box, the input "this is a long sentence" would look like this: 
+
+```
+Text input :  ...s a long sentence
 ```
