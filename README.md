@@ -58,9 +58,5 @@ Either make select menu that can take an array of select Menus (which would allo
 ### Add Utils 
 Make a utils module with all the helper functions like add_newlines etc. 
 
-### Text input scrolling display 
-As you type beyond the bounds of the text input it should scroll ahead and display the latest characters and chop off the beginning, possibly add a ... at the start. for example in a 20 space input box, the input "this is a long sentence" would look like this: 
-
-```
-Text input :  ...s a long sentence
-```
+### Display Text Box 
+Make a window object for displaying text where when it overflows it truncates the displayed text to fit and allows scrolling up and down to display the rest. 
