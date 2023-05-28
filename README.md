@@ -62,3 +62,9 @@ Make a utils module with all the helper functions like add_newlines etc.
 Make a window object for displaying text where when it overflows it truncates the displayed text to fit and allows scrolling up and down to display the rest. 
 
 pos make create_window into a class Window
+
+### Remove items 
+add a remove items from menu option that refreshes the display and removes based on id. useful for conditionally rendering items 
+
+### Select item scrolling text 
+if item text does not fit in item display box. allow user to scroll through the text with right arrow 

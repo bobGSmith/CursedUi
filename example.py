@@ -1,14 +1,14 @@
 import curses
 from CursedUi import *
-import CursedUi.utils as utils 
+
 
 # Custom onClick function for submit button
 def submit_onClick (scr,parent_menu):
     def submit ():
         choices = parent_menu.returnChoicesObject() 
-        width = utils.get_lines_or_cols(scr,"col")
+        width = get_lines_or_cols(scr,"col")
         string = f'Why not take a trip to {choices["holiday_choice"]} with your {choices["pet_choice"]} {choices["pet_name"]} and have a {choices["food_choice"]}!'
-        string = utils.add_newlines(string,width - 2, indent = "  ~ ", startIndent = True)
+        string = add_newlines(string,width - 2, indent = "  ~ ", startIndent = True)
         scr.clear()
         scr.addstr(2,0,string)
         scr.box()
@@ -19,12 +19,12 @@ def submit_onClick (scr,parent_menu):
 
 def main (stdscr): 
 
-    scr = utils.setup_terminal (19,70)
+    scr = setup_terminal (19,70)
 
     # Create menu area and display area
-    menu_area = create_window(scr,9,utils.get_lines_or_cols(scr,"col")-1,0,1,title="Favourite things",box=True)
-    disp_area = create_window(scr,8,utils.get_lines_or_cols(scr,"col")-1,9,1,"Display Area",True,True)
-    hint_box = create_window(scr,1,utils.get_lines_or_cols(scr,"col")-1,17,1,"",False,False)
+    menu_area = create_window(scr,9,get_lines_or_cols(scr,"col")-1,0,1,title="Favourite things",box=True)
+    disp_area = create_window(scr,8,get_lines_or_cols(scr,"col")-1,9,1,"Display Area",True,True)
+    hint_box = create_window(scr,1,get_lines_or_cols(scr,"col")-1,17,1,"",False,False)
 
     mainMenu = SelectMenu(menu_area,[],hint_box = hint_box)
     mainMenu.add_items([
@@ -41,8 +41,8 @@ def main (stdscr):
     while not done: 
         key = scr.getch()
         
-        if key != curses.ERR:
-            if chr(key) in ["q","Q"]:
+        if key != curses.ERR :
+            if chr(key) in ["q","Q"] and not mainMenu.active_selector:
                 done = True
             mainMenu.get_choice(key)
         #scr.addstr(10,10,str(key))

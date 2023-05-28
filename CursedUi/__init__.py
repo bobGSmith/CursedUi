@@ -9,8 +9,10 @@ from .Button import Button
 from .InputText import InputText
 from .SelectItem import SelectItem
 from .create_window import create_window
-from .utils import *
-
+from .add_newlines import add_newlines
+from .get_lines_or_cols import get_lines_or_cols
+from .help_string import help_string
+from .setup_terminal import setup_terminal
 
 
 __version__ = "1.0.0"

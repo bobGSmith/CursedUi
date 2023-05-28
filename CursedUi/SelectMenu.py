@@ -61,6 +61,25 @@ class SelectMenu () :
             self.item_selectors.append(item)
         self.refreshAll()
         self.display()
+    def remove_items(self,item_ids):
+        self.display_blank()
+        new_item_list = []
+        for i in range(len(self.item_selectors)):
+            if self.item_selectors[i].id in item_ids:
+                self.item_selectors[i].window.clear()
+                self.item_selectors[i].window.refresh()
+            else: 
+                new_item_list.append(self.item_selectors[i])
+        self.item_selectors = new_item_list
+        self.selection = 0
+        self.activate()
+        self.active_selector = False
+        self.display()
+    def display_blank(self):
+        for i in range(len(self.item_selectors)):
+                self.containerScr.addstr(self.item_selectors[i].y,self.item_selectors[i].x," ",self.attr)
+                self.containerScr.refresh()
+        self.refreshAll()
     def activate(self): 
         self.active = True 
         self.attr = self.active_selector
@@ -73,3 +92,4 @@ class SelectMenu () :
         self.active = False 
         self.attr = curses.A_NORMAL
         self.display() 
+    
