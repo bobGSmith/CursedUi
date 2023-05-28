@@ -16,20 +16,6 @@ def submit_onClick (scr,parent_menu):
         scr.refresh() 
     return submit           
 
-def create_window (containerScr,h,w,y,x,title="Display",help_string = False, box = True):
-    new_win = containerScr.subwin(h,w,y,x)
-
-    if help_string:
-        new_win.addstr(2,0,utils.add_newlines(
-            utils.help_string,
-            utils.get_lines_or_cols(new_win,"col")-3,
-            indent="  ~ ",
-            startIndent = True))
-    if box: new_win.box()
-    new_win.addstr(0,2,title,curses.A_BOLD)
-    new_win.refresh() 
-
-    return new_win
 
 def main (stdscr): 
 
