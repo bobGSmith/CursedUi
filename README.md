@@ -60,3 +60,5 @@ Make a utils module with all the helper functions like add_newlines etc.
 
 ### Display Text Box 
 Make a window object for displaying text where when it overflows it truncates the displayed text to fit and allows scrolling up and down to display the rest. 
+
+pos make create_window into a class Window
