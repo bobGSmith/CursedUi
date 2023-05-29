@@ -1,8 +1,11 @@
 import curses
+import string
+
 class InputText () : 
     def __init__ (self,containerScr, label,y,x,width,id,shift = 2,selected_attr=curses.A_BOLD ,default_value = "type here",hide_input = False,mask = "*",
             hint = "Text: type or paste input, hit LEFT when done!",
-            hint_box = None, parent_menu = None,label_width = 8
+            hint_box = None, parent_menu = None,label_width = 8,
+            basic_text_only = True
         ) : 
         self.containerScr = containerScr
         self.label = label
@@ -25,6 +28,7 @@ class InputText () :
         self.hint_box = hint_box 
         self.parent_menu = parent_menu
         self.active = False 
+        self.basic_text_only = basic_text_only
         self.build()
     def build(self): 
         self.window.clear()
@@ -40,7 +44,10 @@ class InputText () :
                     self.value = self.value[0:len(self.value)-1]
                     self.build()
             else: 
-                self.value += chr(key)
+                if self.basic_text_only:
+                    if chr(key) in string.printable:
+                        self.value += chr(key)
+                else: self.value += chr(key)
             self.build()
     def activate (self):
         self.active = True 
