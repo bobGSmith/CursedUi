@@ -45,7 +45,7 @@ class InputText () :
                     self.build()
             else: 
                 if self.basic_text_only:
-                    if chr(key) in string.printable:
+                    if chr(key) in string.printable and not key == 10:
                         self.value += chr(key)
                 else: self.value += chr(key)
             self.build()
