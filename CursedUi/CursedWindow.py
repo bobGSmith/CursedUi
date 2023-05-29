@@ -32,11 +32,14 @@ class CursedWindow () :
         self.display_default = display_default
         self.id = id
         if self.display_default:
-            self.window.addstr(2,0,add_newlines(
-                default_string,
-                get_lines_or_cols(self.window,"col")-3,
-                indent="  ~ ",
-                startIndent = True))
+            if self.default_string == help_string:
+                self.window.addstr(2,0,add_newlines(
+                    default_string,
+                    get_lines_or_cols(self.window,"col")-3,
+                    indent="  ~ ",
+                    startIndent = True))
+            else: 
+                self.window.addstr(0,1,self.default_string)
         self.build()
     def refresh(self): 
         self.window.refresh() 
