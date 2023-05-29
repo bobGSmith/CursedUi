@@ -2,8 +2,9 @@ import curses
 
 class SelectMenu () : 
     def __init__(self,containerScr,item_selectors,selected = ">", deselected = "-",active_attr = curses.A_BOLD,activate=True,
-        hint = "Menu: Q=Quit, UP/DOWN=navigate, LEFT/RIGHT=select/deselect", hint_box = None):
+        hint = "Menu: Q=Quit, UP/DOWN=navigate, LEFT/RIGHT=select/deselect", hint_box = None,id = ""):
         self.item_selectors = item_selectors
+        self.id = id
         self.active_selector = False 
         self.selection = 0 
         self.selected = selected

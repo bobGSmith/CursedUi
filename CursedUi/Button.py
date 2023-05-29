@@ -6,7 +6,9 @@ class Button () :
         y,x,id,onClick=None,shift = 2,reset_click_on_deactivate = True,
         selected_attr = curses.A_STANDOUT,parent_menu = None,
         onclick_finished_label = "done",hint_box = None,
-        hint="Button: Hit Enter to click, left arrow to deselect"):
+        hint="Button: Hit Enter to click, left arrow to deselect"
+    ):
+        '''If you want to inherrit Button and create custom onClick in the new class you can leave onClick as None'''
         self.containerScr = containerScr 
         self.inactive_label = inactive_label
         self.active_label = active_label 
@@ -17,7 +19,7 @@ class Button () :
         self.y = y
         self.id = id
         self.shift = shift
-        self.onClick = onClick
+        if onClick != None: self.onClick = onClick
         self.width = max(len(self.inactive_label),len(self.active_label),len(self.clicked_label),len(onclick_finished_label)) + 4
         self.active = False 
         self.clicked = False

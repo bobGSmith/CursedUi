@@ -1,17 +1,11 @@
 from .add_newlines import add_newlines
 from .get_lines_or_cols import get_lines_or_cols
 from .help_string import help_string
-import curses
-def create_window (containerScr,h,w,y,x,title="Display",display_default = False, box = True, default_string = help_string):
-    new_win = containerScr.subwin(h,w,y,x)
+from .CursedWindow import CursedWindow
 
-    if display_default:
-        new_win.addstr(2,0,add_newlines(
-            default_string,
-            get_lines_or_cols(new_win,"col")-3,
-            indent="  ~ ",
-            startIndent = True))
-    if box: new_win.box()
-    new_win.addstr(0,2,title,curses.A_BOLD)
-    new_win.refresh() 
+
+def create_window (containerScr,h,w,y,x,title="Display",display_default = False, box = True, default_string = help_string):
+    '''deprecated: better to just use Window object directly'''
+    new_win = CursedWindow(containerScr,h,w,y,x,title,display_default=display_default,box=box,default_string=default_string)
     return new_win
+
