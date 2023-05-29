@@ -69,6 +69,5 @@ add a remove items from menu option that refreshes the display and removes based
 ### Select item scrolling text 
 if item text does not fit in item display box. allow user to scroll through the text with right arrow 
 
-### Add item dict 
-when adding items to SelectMenu, it should add them to a dict with their id. Can then update getItemById to use the dict instead of loop.. 
+ 
 

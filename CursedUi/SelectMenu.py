@@ -7,6 +7,7 @@ class SelectMenu () :
         self.id = id
         self.active_selector = False 
         self.selection = 0 
+        self.item_dict = {} 
         self.selected = selected
         self.deselected = deselected 
         self.containerScr = containerScr
@@ -60,6 +61,7 @@ class SelectMenu () :
     def add_items (self,items):
         for item in items:
             self.item_selectors.append(item)
+            self.item_dict[item.id] = item
         self.refreshAll()
         self.display()
     def remove_items(self,item_ids):
@@ -94,7 +96,7 @@ class SelectMenu () :
         self.attr = curses.A_NORMAL
         self.display() 
     def getItemById(self,id): 
-        for i in range(len(self.item_selectors)):
-            if id == self.item_selectors[i].id:
-                return self.item_selectors[i]
+        return self.item_dict[id]
+    def getElementById(self,id):
+        return self.getItemById(id)
     
