@@ -39,7 +39,7 @@ class InputText () :
         self.window.refresh() 
     def get_choice(self, key):
         if self.active:
-            if key == 8:
+            if key in [8,263]:
                 if len(self.value) > 0: 
                     self.value = self.value[0:len(self.value)-1]
                     self.build()
