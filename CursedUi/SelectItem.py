@@ -61,14 +61,13 @@ class SelectItem () :
         self.build()
     def returnChoice(self):
         return self.items[self.selection]
-    def getTruncatedValue (self,index=0,trailing_start="",trailing_end = ".."):
-        value = self.items[self.selection]
+    def getTruncatedValue (self,value,index=0,trailing_start="",trailing_end = ".."):
         i = index % len(value)
         if len(value) < self.item_width: 
             return value 
         else: 
-            truncated = f"{value[i:(i+(self.item_width) if len(value) - i > self.item_width else None)]}"
+            truncated = f"{value[i:(i+(self.item_width) if len(value) - i > (self.item_width) else None)]}"
             if len(truncated) < self.item_width:
-                return getTruncatedValue(f"{truncated} {value}",self.item_width)
+                return self.getTruncatedValue(f"{truncated} {value}",index = 0)
             else:
-                return f"{trailing_start}{truncated[len(trailing_start):-len(trailing_end)]}{trailing_end}"
+                return f"{trailing_start}{truncated[len(trailing_start):-(len(trailing_end)+1)]}{trailing_end}"

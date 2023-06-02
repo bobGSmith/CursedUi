@@ -31,7 +31,7 @@ def main (stdscr):
     menu_area.add_element(mainMenu)
     
     mainMenu.add_items([
-        SelectItem(menu_area,"Pet",["dog", "cat" ,"fish"],2,2,"pet_choice",hint_box = hint_box,parent_menu=mainMenu),
+        SelectItem(menu_area,"Pet",["dog", "cat" ,"fish","veloceraptosoratron9000"],2,2,"pet_choice",hint_box = hint_box,parent_menu=mainMenu),
         InputText(menu_area,"Pet Name",3,2,40,"pet_name",hint_box = hint_box, parent_menu = mainMenu),
         SelectItem(menu_area,"Food",["pizza","burger","pasta"],4,2,"food_choice",hint_box = hint_box,parent_menu=mainMenu),
         SelectItem(menu_area,"Holiday",["spain","italy","france"],5,2,"holiday_choice",hint_box = hint_box,parent_menu=mainMenu),
